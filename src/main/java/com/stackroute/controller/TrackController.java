@@ -28,7 +28,7 @@ public class TrackController {
     }
 
     @PostMapping("track")
-    public ResponseEntity<?> saveTrack(@RequestBody Track track){
+    public ResponseEntity<?> saveTrack(@RequestBody Track track) throws Exception{
 
         try{
             trackServiceImpl.saveTrack(track);
@@ -42,7 +42,7 @@ public class TrackController {
     }
 
     @GetMapping("track/{id}")
-    public ResponseEntity<?> getById(@PathVariable int id){
+    public ResponseEntity<?> getById(@PathVariable int id) throws Exception{
 
         try{
             responseEntity = new ResponseEntity<Track>(trackServiceImpl.getById(id),HttpStatus.OK);
@@ -55,7 +55,7 @@ public class TrackController {
     }
 
     @GetMapping("tracks")
-    public ResponseEntity<?> getAllTracks(){
+    public ResponseEntity<?> getAllTracks() throws Exception{
 
         try{
             responseEntity = new ResponseEntity<List<Track>>(trackServiceImpl.getAllTracks(),HttpStatus.OK);
@@ -68,7 +68,7 @@ public class TrackController {
     }
 
     @DeleteMapping("track/{id}")
-    public ResponseEntity<?> deleteTrackById(@PathVariable int id){
+    public ResponseEntity<?> deleteTrackById(@PathVariable int id) throws Exception{
 
         try{
             responseEntity = new ResponseEntity<Optional<Track>>(trackServiceImpl.deleteTrackById(id),HttpStatus.OK);
@@ -81,7 +81,7 @@ public class TrackController {
     }
 
     @PutMapping("track/{id}")
-    public ResponseEntity<?> updateTrack(@PathVariable int id,@RequestBody Track track){
+    public ResponseEntity<?> updateTrack(@PathVariable int id,@RequestBody Track track) throws Exception{
 
         try{
 
@@ -94,22 +94,10 @@ public class TrackController {
         return responseEntity;
     }
 
-    //getByName implemented
-//    @GetMapping("trackname/{name}")
-//    public ResponseEntity<?> getByName(@PathVariable String name){
-//
-//        try{
-//            responseEntity = new ResponseEntity<Track>(trackService.getByName(name),HttpStatus.OK);
-//        }
-//        catch (Exception e){
-//            responseEntity = new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
-//        }
-//
-//        return responseEntity;
-//    }
+
 
     @GetMapping("tracks/{name}")
-    public ResponseEntity<?> getByName(@PathVariable String name){
+    public ResponseEntity<?> getByName(@PathVariable String name) throws Exception{
 
         try{
             responseEntity = new ResponseEntity<Track>(trackServiceImpl.getByName(name),HttpStatus.OK);
